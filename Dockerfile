@@ -1,7 +1,7 @@
 # Build stage 0
 FROM erlang:25.1-alpine
 
-RUN apk add --no-cache make
+RUN apk add --no-cache git make curl
 
 RUN mkdir /buildroot
 WORKDIR /buildroot
