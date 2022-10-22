@@ -17,7 +17,7 @@ init(Ref, Transport, _Opts = []) ->
 loop(Socket, Transport) ->
 	case Transport:recv(Socket, 0, 60000) of
 		{ok, Data} when Data =/= <<4>> ->
-			Transport:send(Socket, Data),
+			Transport:send(Socket, <<$[, Data/binary, $]>>),
 			loop(Socket, Transport);
 		_ ->
 			ok = Transport:close(Socket)

@@ -14,8 +14,8 @@ RUN make
 
 
 # Build stage 1
-#FROM alpine
-FROM erlang:25.1-alpine
+FROM alpine
+#FROM erlang:25.1-alpine
 
 # Install some libs
 RUN apk add --no-cache openssl && \
