@@ -1,0 +1,7 @@
+tcp_echo/_rel
+tcp_echo/deps
+tcp_echo/.erlang.mk
+tcp_echo/ebin
+tcp_echo/*.d
+.vscode
+deployment
