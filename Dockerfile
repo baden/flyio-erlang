@@ -27,8 +27,7 @@ FROM debian:bullseye-20221004-slim
 
 # Install some libs
 RUN apt-get update -y \
-    && apt-get install --no-install-recommends -y libstdc++6 openssl libncurses5 locales bash postgresql-client \
-    procps iproute2 net-tools curl jq nano openssl libsodium-dev libsnappy-dev \
+    && apt-get install --no-install-recommends -y libstdc++6 openssl libncurses5 locales bash \
     && apt-get clean -y \
     && rm -f /var/lib/apt/lists/*_* \
     && groupadd -g 1000 -r fenix \
