@@ -1,19 +1,18 @@
-# Build stage 0
-FROM erlang:25.1-alpine
+# Build stage
+FROM erlang:25.1-alpine as builder
 
 RUN apk add --no-cache git make curl
 
 RUN mkdir /buildroot
 WORKDIR /buildroot
 
-COPY tcp_echo tcp_echo
+COPY erl_fenix_auto erl_fenix_auto
 
-WORKDIR tcp_echo
-# RUN rebar3 as prod release
-RUN make
+WORKDIR erl_fenix_auto
+RUN rebar3 as prod release
 
 
-# Build stage 1
+# Release stage
 FROM alpine
 #FROM erlang:25.1-alpine
 
@@ -23,11 +22,11 @@ RUN apk add --no-cache openssl && \
     apk add --no-cache libstdc++
 
 # Install the released application
-COPY --from=0 /buildroot/tcp_echo/_rel /opt
+COPY --from=builder /buildroot/erl_fenix_auto/_build/prod/rel /opt
 
 # Expose relevant ports
-EXPOSE 5555
+EXPOSE 8080
 
 # Maybe ENTRYPOINT?
-CMD ["/opt/tcp_echo/bin/tcp_echo", "foreground"]
+CMD ["/opt/erl_fenix_auto/bin/erl_fenix_auto", "foreground"]
 # CMD ["ls", "/tcp_echo/tcp_echo"]

@@ -1,0 +1,6 @@
+-sname erl_fenix_auto
+
+-setcookie erl_fenix_auto_cookie
+
++K true
++A30

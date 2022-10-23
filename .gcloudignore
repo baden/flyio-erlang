@@ -9,3 +9,5 @@ erl_fenix_auto/deps
 erl_fenix_auto/.erlang.mk
 erl_fenix_auto/ebin
 erl_fenix_auto/*.d
+.dockerignore
+fly.toml
